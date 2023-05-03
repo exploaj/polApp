@@ -17,7 +17,17 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        children:[
+          {
+            path: '',
+            loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+          },
+          {
+            path: 'mapa/:geo',
+            loadChildren: () => import('../mapa/mapa.module').then( m => m.MapaPageModule)
+          }
+        ],
+        
       },
       {
         path: '',
