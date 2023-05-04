@@ -7,29 +7,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item button detail="true" detail-icon="caret-forward-outline"
-  (click)="abrirEnlace( '-16.494063, -68.195227' )"
+  <ion-item button detail="true" *ngFor="let sucursales of sucursales$ | async" detail-icon="location"
+  (click)="abrirEnlace( sucursales.ubicacion )"
   >
     <ion-label>
-      <h3>Sucursal A</h3>
-      <p>Avenida Sucre </p>
-    </ion-label>
-  </ion-item>
-  
-  <ion-item button detail="true" detail-icon="caret-forward-outline">
-    <ion-label>
-      <h3>Sucursal B</h3>
-      <p>Avenida sucre lado </p>
-    </ion-label>
-  </ion-item>
-    
-  <ion-item button detail="true" detail-icon="caret-forward-outline">
-    <ion-label>
-      <h3>Sucursal C</h3>
-      <p>Zona Rio Seco</p>
-      <p>Detail icon set to caret-forward-outline</p>
+      <h3>{{sucursales.nombre}}</h3>
+      <p><ion-icon name="business"></ion-icon> {{sucursales.direccion}} </p>
+      <p><ion-icon name="calendar"></ion-icon> {{sucursales.horarios}} </p>
     </ion-label>
   </ion-item>
 
-  
+  <section>
+    <h1>User Profiles</h1>
+    <ul>
+        <li *ngFor="let servicios of servicios$ | async">
+          {{servicios.otro}}
+          {{servicios.cortes}}
+          
+          
+          
+
+        </li>
+    </ul>
+</section>
 </ion-content>
