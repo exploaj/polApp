@@ -1,11 +1,17 @@
 <app-header titulo="Prueba"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <section>
+    <h1>User Profiles</h1>
+    <ul>
+        <li *ngFor="let servicios of servicios$ | async">
+          {{servicios.titulo}}
+          {{servicios.grupo}}        
+          <img src="{{servicios.foto}}" alt="">
+  
+        </li>
+    </ul>
+  </section>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>
