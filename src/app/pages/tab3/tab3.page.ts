@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { DataLocalService } from '../services/data-local.service';
-import { Registro } from '../models/registro.model';
+import { DataLocalService } from '../../services/data-local.service';
+import { Registro } from '../../models/registro.model';
 
 import { CollectionReference, Firestore, collection, collectionData, getDoc, doc, getDocs} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -35,7 +35,7 @@ export class Tab3Page {
     this.dataLocal.abrirRegistro( registro );
   }
   abrirEnlace(geo: string) {
-    this.dataLocal.abrirEnlace(geo)
+    this.dataLocal.abrirEnlace('/tabs/tab3/mapa/',geo)
   }
 
 }

@@ -12,8 +12,19 @@ const routes: Routes = [
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'tab2',        
+        
+        children:[
+          {
+            path: '',
+            loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+          },
+          {
+            path: 'contenido1/:var1',
+            loadChildren: () => import('../../pages/contenido1/contenido1.module').then( m => m.Contenido1PageModule)
+          }
+
+        ],
       },
       {
         path: 'tab3',
@@ -26,6 +37,7 @@ const routes: Routes = [
             path: 'mapa/:geo',
             loadChildren: () => import('../mapa/mapa.module').then( m => m.MapaPageModule)
           }
+
         ],
         
       },
