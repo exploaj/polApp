@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, collectionData, getDoc, doc, getDocs} from '@angular/fire/firestore';
+import { Firestore, collection, collectionData} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DataLocalService } from '../../services/data-local.service';
 interface ServiciosProfile {

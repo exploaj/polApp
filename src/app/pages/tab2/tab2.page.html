@@ -7,13 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <ion-card *ngFor="let servicios of servicios$ | async">
-    <img alt="" src="{{servicios.foto}}" />
-    <ion-card-header (click)="abrirEnlace( servicios )">
-      <ion-card-title>{{servicios.titulo}}</ion-card-title>
-    </ion-card-header>
-  
+  <ion-card  *ngFor="let servicios of servicios$ | async">
+    <ion-label class="titulo">
+      <h1> {{ servicios.titulo }} </h1>
+    </ion-label>
+    <img [src]="servicios.foto " *ngIf="servicios.foto" (click)="abrirEnlace( servicios )">
   </ion-card>
 
 </ion-content>

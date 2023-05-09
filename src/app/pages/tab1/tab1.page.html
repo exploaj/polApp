@@ -13,4 +13,8 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-chip *ngFor="let servicios of servicios$ | async" [outline]="true" (click)="abrirEnlace( servicios )"> 
+    {{ servicios.titulo }}
+  </ion-chip>
+
 </ion-content>

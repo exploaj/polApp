@@ -1,11 +1,6 @@
 <app-header titulo=""></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">contenido1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div *ngFor="let subgrupo of subgrupo$ | async">
     <ion-label class="titulo">
@@ -28,11 +23,11 @@
     </ion-grid>
   </div>
   
-
-  <ion-card *ngFor="let subgrupo2 of subgrupo2$ | async">
-    <img alt="" src="{{subgrupo2.foto}}" />
-    <ion-card-header >
-      <ion-card-title>{{subgrupo2.titulo}}</ion-card-title>
-    </ion-card-header>
+  <ion-card type="ios"  *ngFor="let subgrupo2 of subgrupo2$ | async">
+    <ion-label class="titulo">
+      <h1> {{ subgrupo2.titulo }} </h1>
+    </ion-label>
+    <img [src]="subgrupo2.foto " *ngIf="subgrupo2.foto">
   </ion-card>
+
 </ion-content>
