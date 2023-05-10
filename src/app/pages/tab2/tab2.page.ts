@@ -33,7 +33,7 @@ export class Tab2Page {
   }
   abrirEnlace(var1: any) {
     this.dataLocal.setGrupo1(var1);
-    this.dataLocal.abrirEnlace2('/tabs/tab2/contenido1/',var1)
+    this.dataLocal.abrirEnlace2('/tabs/tab2/contenido1/')
   }
 
 }

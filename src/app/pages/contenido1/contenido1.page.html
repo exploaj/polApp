@@ -2,32 +2,19 @@
 
 <ion-content [fullscreen]="true">
 
-  <div *ngFor="let subgrupo of subgrupo$ | async">
-    <ion-label class="titulo">
-      <h1> {{ subgrupo.titulo }} </h1>
-    </ion-label>
+  <ion-card *ngFor="let subgrupo of subgrupo$ | async">
+    <img [src]="subgrupo.foto " *ngIf="subgrupo.foto" (click)="abrirEnlace( subgrupo )">
+    <ion-card-header (click)="abrirEnlace( subgrupo )">
+      <ion-card-title >{{ subgrupo.titulo }}</ion-card-title>
+    </ion-card-header>
   
-    <img [src]="subgrupo.foto " *ngIf="subgrupo.foto">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size=12>
-  
-          <ion-label> {{ subgrupo.detalle | slice: 0: oculto }}... </ion-label>
-          <ion-label color="primary"
+    <ion-card-content>
+      <ion-label> {{ subgrupo.detalle | slice: 0: oculto }}... </ion-label>
+      <ion-label color="primary"
                      (click)="oculto = 5000"
                      *ngIf="oculto !== 5000">Leer más!</ion-label>
-  
-        </ion-col>
-      </ion-row>
-  
-    </ion-grid>
-  </div>
-  
-  <ion-card type="ios"  *ngFor="let subgrupo2 of subgrupo2$ | async">
-    <ion-label class="titulo">
-      <h1> {{ subgrupo2.titulo }} </h1>
-    </ion-label>
-    <img [src]="subgrupo2.foto " *ngIf="subgrupo2.foto">
+    </ion-card-content>
   </ion-card>
+
 
 </ion-content>

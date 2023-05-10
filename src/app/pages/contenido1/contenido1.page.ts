@@ -13,11 +13,6 @@ interface SubgrupoProfile {
   ruta: string
 }
 
-interface Subgrupo2Profile {
-  foto: string,
-  titulo: string
-}
-
 @Component({
   selector: 'app-contenido1',
   templateUrl: './contenido1.page.html',
@@ -28,31 +23,20 @@ export class Contenido1Page implements OnInit {
   oculto = 150;
   private firestore: Firestore = inject(Firestore);
   subgrupo$: Observable<SubgrupoProfile[]>;
-  public subgrupo2$: Observable<Subgrupo2Profile[]>;
   
-
   constructor(private route: ActivatedRoute, public dataLocal: DataLocalService) {
     this.grupo1 = new Grupo1('','','');
     this.grupo1 = this.dataLocal.grupo1;
     const subgrupoProfileCollection = collection(this.firestore, this.grupo1.grupo);
     this.subgrupo$ = collectionData(subgrupoProfileCollection) as Observable<SubgrupoProfile[]>;
-    this.subgrupo2$ = collectionData(subgrupoProfileCollection) as Observable<SubgrupoProfile[]>;
-    
-    this.subgrupo$.subscribe((res)=>{
-      res.map((t) => {
-        //console.log(t)
-        const subgrupo2ProfileCollection = collection(this.firestore, t.ruta);
-        this.subgrupo2$ = collectionData(subgrupo2ProfileCollection) as Observable<Subgrupo2Profile[]>;    
-      });
-    });
-
   }
 
   ngOnInit() {
-    let var1: any = this.route.snapshot.paramMap.get('var1');
-    
-    
-    
+  }
+
+  abrirEnlace(var1: any) {
+    this.dataLocal.setGrupo2(var1);
+    this.dataLocal.abrirEnlace2('/tabs/tab2/contenido2/');
   }
 
 }

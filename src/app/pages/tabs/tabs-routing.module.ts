@@ -9,7 +9,18 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        children:[
+          {
+            path: '',
+            loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+          },
+          {
+            path: 'contenido1/:var1',
+            loadChildren: () => import('../../pages/contenido1/contenido1.module').then( m => m.Contenido1PageModule)
+          }
+
+        ],
+        
       },
       {
         path: 'tab2',        
@@ -22,6 +33,10 @@ const routes: Routes = [
           {
             path: 'contenido1/:var1',
             loadChildren: () => import('../../pages/contenido1/contenido1.module').then( m => m.Contenido1PageModule)
+          },
+          {
+            path: 'contenido2/',
+            loadChildren: () => import('../../pages/contenido2/contenido2.module').then( m => m.Contenido2PageModule)
           }
 
         ],
@@ -45,6 +60,14 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
+      },
+      {
+        path: 'usuario',
+        loadChildren: () => import('../usuario/usuario.module').then( m => m.UsuarioPageModule)
+      },
+      {
+        path: 'promociones',
+        loadChildren: () => import('../promociones/promociones.module').then( m => m.PromocionesPageModule)
       }
     ]
   },
