@@ -6,23 +6,50 @@
 
 <ion-content [fullscreen]="true">
 <br>
+
+
   <ion-list>
     <ion-item>
-      <ion-input label="Nombre y Apellido: " labelPlacement="stacked"></ion-input>
+      <ion-icon name="person-circle-outline"></ion-icon> &nbsp; 
+      <ion-input label="Nombre completo: " [(ngModel)]="registro.nombres">
+    </ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="CI: " type="number"></ion-input>
+      <ion-icon name="bookmark-outline"></ion-icon> &nbsp; 
+      <ion-input label="CI: " type="number" [(ngModel)]="registro.ci">
+    </ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Celular: " type="number"></ion-input>
+      <ion-icon name="call-outline"></ion-icon> &nbsp; 
+      <ion-input label="Celular: " type="number" [(ngModel)]="registro.celular">
+    </ion-input>
     </ion-item>
     <ion-item>
-      <ion-input  type="date"></ion-input>
-    </ion-item>
-
+      <ion-icon name="calendar-number-outline"></ion-icon> &nbsp; 
+      Fec. de nacimiento: <ion-datetime-button datetime="date" ></ion-datetime-button>
+    </ion-item>    
     <ion-item>
-      <ion-input label="Dirección: "></ion-input>
+      <ion-icon name="business-outline"></ion-icon> &nbsp; 
+      <ion-input label="Dirección: " [(ngModel)]="registro.direccion">
+    </ion-input>
     </ion-item>
 
   </ion-list>
+
+  <ion-button (click)="guardarPerfil()" expand="block"  shape="round">
+    Guardar mis datos
+  </ion-button>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime
+      presentation="date"
+      [preferWheel]="true"
+      [showDefaultButtons]="true"
+      id="date"
+      (ionChange)="setDate()" >
+    </ion-datetime>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
