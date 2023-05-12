@@ -26,10 +26,12 @@ export class Tab2Page {
   constructor(public dataLocal: DataLocalService) {
     const serviciosProfileCollection = collection(this.firestore, 'servicios');
     this.servicios$ = collectionData(serviciosProfileCollection) as Observable<ServiciosProfile[]>;
+    /*
     const servicios2 = collection(this.firestore, '/servicios/166XyboxLuhDWoHrcRtE/cortes/4MGQq8F3RnWEIy4rIeen/fotos');
     collectionData(servicios2).subscribe((r)=> {
       console.log(r);
     });
+    */
   }
   abrirEnlace(var1: any) {
     this.dataLocal.setGrupo1(var1);

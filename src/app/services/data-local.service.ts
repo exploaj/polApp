@@ -5,6 +5,8 @@ import { Grupo2 } from '../models/grupo2.model';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { Perfil } from '../models/perfil.model';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +18,10 @@ export class DataLocalService {
   private _storage: Storage | null = null;
 
   constructor(
+    
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    public http: HttpClient
   ) { 
     this.init();
     this.grupo1 = new Grupo1('','','');
@@ -69,7 +73,6 @@ export class DataLocalService {
   async perfil() {
     const registroPerfil = await this.storage.get('perfil');
     this.registroPerfil = registroPerfil || [];
-    console.log('aqui',this.registroPerfil);
     return this.registroPerfil;
   }
 
@@ -78,5 +81,10 @@ export class DataLocalService {
     //console.log(this.registroPerfil);
     this.storage.set('perfil', this.registroPerfil);
     this.perfil();
+    this.sendPostRequest();
+  }
+
+  sendPostRequest() {
+    this.http.post("http://207.154.227.227:7003/api/nuevo-clientes", this.registroPerfil).subscribe((Response) => {});
   }
 }

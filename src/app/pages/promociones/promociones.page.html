@@ -5,4 +5,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-card  *ngFor="let promociones of promociones$ | async">
+    <img [src]="promociones.foto " *ngIf="promociones.foto" >
+    <ion-card-header>
+      <ion-card-title>{{ promociones.titulo }}</ion-card-title>
+    </ion-card-header>  
+    <ion-card-content>
+      {{ promociones.detalle }}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

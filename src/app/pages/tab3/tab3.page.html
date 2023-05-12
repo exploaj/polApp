@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="assets/img/ubicacion.JPG">
+  <img src="/assets/img/ubicacion.JPG">
   <ion-item button detail="true" *ngFor="let sucursales of sucursales$ | async" detail-icon="location"
   (click)="abrirEnlace( sucursales.ubicacion )"
   >

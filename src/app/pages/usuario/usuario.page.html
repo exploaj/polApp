@@ -5,18 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<br>
-
-
+  <br>
+  <br>
+  <br>
+  <ion-row>
+    <ion-col>
   <ion-list>
     <ion-item>
       <ion-icon name="person-circle-outline"></ion-icon> &nbsp; 
-      <ion-input label="Nombre completo: " [(ngModel)]="registro.nombres">
+      <ion-input label="*Nombres y apellidos " labelPlacement="stacked" [(ngModel)]="registro.nombres">
     </ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="bookmark-outline"></ion-icon> &nbsp; 
-      <ion-input label="CI: " type="number" [(ngModel)]="registro.ci">
+      <ion-input label="*CI: " type="number" [(ngModel)]="registro.ci">
     </ion-input>
     </ion-item>
     <ion-item>
@@ -30,16 +32,31 @@
     </ion-item>    
     <ion-item>
       <ion-icon name="business-outline"></ion-icon> &nbsp; 
-      <ion-input label="Dirección: " [(ngModel)]="registro.direccion">
-    </ion-input>
+      <ion-textarea label="Dirección: " [(ngModel)]="registro.direccion">
+    </ion-textarea>
     </ion-item>
-
   </ion-list>
+</ion-col>
+</ion-row>
 
-  <ion-button (click)="guardarPerfil()" expand="block"  shape="round">
-    Guardar mis datos
-  </ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <br>
+        <ion-button [disabled]="!registro.ci" (click)="guardarPerfil()" expand="block" size="default">
+        Guardar mis datos
+      </ion-button></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col>
+        <ion-label>(*) Datos Obligatorios</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
       <ion-datetime
