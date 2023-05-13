@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><ion-icon name="shirt"></ion-icon> Moda y Tendencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card  *ngFor="let moda of moda$ | async">
+    <img [src]="moda.foto " *ngIf="moda.foto" >
+    <ion-card-header *ngIf="moda.titulo">
+      <ion-card-title>{{ moda.titulo }}</ion-card-title>
+    </ion-card-header>  
+    <ion-card-content *ngIf="moda.detalle">
+      {{ moda.detalle }}
+      <ion-button expand="block" size="default" (click)="abrirEnlace( moda )">
+        Ver fotos
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

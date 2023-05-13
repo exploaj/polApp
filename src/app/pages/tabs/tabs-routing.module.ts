@@ -68,7 +68,21 @@ const routes: Routes = [
       {
         path: 'promociones',
         loadChildren: () => import('../promociones/promociones.module').then( m => m.PromocionesPageModule)
-      }
+      },
+  {
+    path: 'moda',
+        children:[
+          {
+            path: '',
+            loadChildren: () => import('../moda/moda.module').then( m => m.ModaPageModule)
+          },
+          {
+            path: 'fotos/',
+            loadChildren: () => import('../modafotos/modafotos.module').then( m => m.ModafotosPageModule)
+          }
+
+        ],
+  }
     ]
   },
   {

@@ -7,6 +7,21 @@ import { Storage } from '@ionic/storage-angular';
 import { Perfil } from '../models/perfil.model';
 import { HttpClient } from '@angular/common/http';
 
+interface Usuarios {
+  nombres: string,
+  ci: string,
+  celular: string,
+  direccion: string,
+  fecha: string,
+  idNotificacion: string
+}
+interface ModaProfile {
+  foto: string,
+  titulo: string,
+  detalle: string,
+  ruta: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +30,9 @@ export class DataLocalService {
   public registroPerfil;
   public grupo1;
   public grupo2;
+  public globalModa: ModaProfile;
   private _storage: Storage | null = null;
+  usuarios: Usuarios;
 
   constructor(
     
@@ -28,6 +45,9 @@ export class DataLocalService {
     this.grupo2 = new Grupo2('','','','');
     this.registroPerfil = new Perfil('','','','','','');
     this.perfil();
+    this.usuarios = new Perfil('','','','','','');
+    this.globalModa = new Grupo2('','','','');
+
 
   }
 
@@ -70,6 +90,10 @@ export class DataLocalService {
     this.grupo2 =  grupo2;
   }
 
+  setGlobalModa(moda: ModaProfile ) {
+    this.globalModa =  moda;
+  }
+
   async perfil() {
     const registroPerfil = await this.storage.get('perfil');
     this.registroPerfil = registroPerfil || [];
@@ -78,13 +102,18 @@ export class DataLocalService {
 
   guardarPerfil(perfil: Perfil){
     this.registroPerfil = perfil;
-    //console.log(this.registroPerfil);
     this.storage.set('perfil', this.registroPerfil);
     this.perfil();
     this.sendPostRequest();
   }
 
   sendPostRequest() {
-    this.http.post("http://207.154.227.227:7003/api/nuevo-clientes", this.registroPerfil).subscribe((Response) => {});
+    this.usuarios.nombres = this.registroPerfil.nombres;
+    this.usuarios.ci = this.registroPerfil.ci;
+    this.usuarios.celular = this.registroPerfil.celular;
+    this.usuarios.direccion = this.registroPerfil.direccion;
+    this.usuarios.fecha = this.registroPerfil.fecha;
+    this.usuarios.idNotificacion = this.registroPerfil.idNotificacion;
+    this.http.post("http://207.154.227.227:7003/api/nuevo-clientes", this.usuarios,{}).subscribe((Response) => {});
   }
 }

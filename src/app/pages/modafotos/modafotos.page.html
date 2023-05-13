@@ -1,0 +1,8 @@
+<app-header titulo=""></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let fotos of fotos$ | async">
+    <img [src]="fotos.foto " *ngIf="fotos.foto" >
+  </ion-card>
+
+</ion-content>

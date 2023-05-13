@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataLocalService } from 'src/app/services/data-local.service';
 import { Grupo1 } from '../../models/grupo1.model';
 
-import { Firestore, collection, collectionData, getDoc, doc, getDocs} from '@angular/fire/firestore';
+import { Firestore, collection, collectionData} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 interface SubgrupoProfile {

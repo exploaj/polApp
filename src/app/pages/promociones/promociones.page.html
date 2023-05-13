@@ -7,10 +7,10 @@
 <ion-content [fullscreen]="true">
   <ion-card  *ngFor="let promociones of promociones$ | async">
     <img [src]="promociones.foto " *ngIf="promociones.foto" >
-    <ion-card-header>
+    <ion-card-header *ngIf="promociones.titulo">
       <ion-card-title>{{ promociones.titulo }}</ion-card-title>
     </ion-card-header>  
-    <ion-card-content>
+    <ion-card-content *ngIf="promociones.detalle">
       {{ promociones.detalle }}
     </ion-card-content>
   </ion-card>

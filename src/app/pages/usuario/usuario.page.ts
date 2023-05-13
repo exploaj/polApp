@@ -17,9 +17,22 @@ export class UsuarioPage implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
-      this.registro = this.dataLocal.registroPerfil;
-      (document.getElementById('date') as any).value=this.registro.fecha+'T01:01:01.789';
+      this.Miperfil();
     },1000)
+  }
+
+  Miperfil(){
+    if(this.dataLocal.registroPerfil){
+      this.registro = this.dataLocal.registroPerfil;
+      if(this.registro.fecha){(document.getElementById('date') as any).value=this.registro.fecha+'T01:01:01.789';}
+      else {
+        let fe = new Date();
+        //console.log(fe.toISOString());
+        (document.getElementById('date') as any).value= fe.toISOString();
+
+      }
+      
+    }
   }
 
   guardarPerfil(){
